@@ -453,7 +453,7 @@ const totalHours = totalDays * 24;
 const nextBirthday = new Date(
     target.getFullYear(),
     dob.getMonth(),
-    dob.getDate(),~
+    dob.getDate(),
 );
 if (nextBirthday < target)
     nextBirthday.setFullYear(target.getFullYear() + 1);
