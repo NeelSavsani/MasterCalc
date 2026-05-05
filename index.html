@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MasterCalc Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/e05d24f6c7.js" crossorigin="anonymous"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- ══════════ HEADER ══════════ -->
+    <header>
+      <a class="logo" href="#">
+        <img src="assets/MasterEagle.png" height="40" width="45" alt="Logo">
+        <span class="logo-name">MasterCalc Pro</span>
+      </a>
+
+      <div class="nav-icons">
+        <!-- Theme Toggle -->
+        <button
+          class="icon-btn"
+          id="themeBtn"
+          title="Toggle Theme"
+          onclick="toggleTheme()"
+        >
+        <i class="fa-solid fa-sun"></i>
+        </button>
+        <div class="sep"></div>
+        <!-- GitHub -->
+        <a
+          class="icon-btn"
+          href="https://github.com"
+          target="_blank"
+          title="GitHub"
+        >
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <!-- LinkedIn -->
+        <a
+          class="icon-btn"
+          href="https://linkedin.com"
+          target="_blank"
+          title="LinkedIn"
+        >
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+        <!-- Email -->
+        <a class="icon-btn" href="mailto:your@email.com" title="Send Email">
+          <i class="fa-solid fa-envelope"></i>
+        </a>
+      </div>
+
+      <!-- Hamburger for mobile -->
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-icons">
+        <button class="icon-btn" onclick="toggleTheme()"><i class="fa-solid fa-sun"></i></button>
+        <a class="icon-btn" href="https://github.com" target="_blank">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a class="icon-btn" href="https://linkedin.com" target="_blank">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+        <a class="icon-btn" href="mailto:your@email.com">
+          <i class="fa-solid fa-envelope"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- ══════════ MAIN ══════════ -->
+    <main>
+      <h1>Master<span>Calc</span> Pro</h1>
+      <p class="subtitle">// all-in-one calculation suite</p>
+
+      <div class="tabs-wrap">
+        <div class="tabs">
+          <button class="tab active" onclick="showTab('basic')">Basic</button>
+          <button class="tab" onclick="showTab('trig')">Trigonometry</button>
+          <button class="tab" onclick="showTab('geometry')">Geometry</button>
+          <button class="tab" onclick="showTab('emi')">EMI</button>
+          <button class="tab" onclick="showTab('data')">Data Size</button>
+          <button class="tab" onclick="showTab('temp')">Temperature</button>
+          <button class="tab" onclick="showTab('unit')">Unit Converter</button>
+          <button class="tab" onclick="showTab('age')">Age Calc</button>
+        </div>
+      </div>
+
+      <!-- ═══ BASIC CALCULATOR ═══ -->
+      <div class="panel active" id="tab-basic">
+        <div class="calc-card">
+          <h2>Basic Calculator</h2>
+          <div class="display">
+            <div class="display-expr" id="expr"></div>
+            <div class="display-main" id="display">0</div>
+          </div>
+          <div class="btn-grid">
+            <button class="btn btn-cl" onclick="clearAll()">AC</button>
+            <button class="btn btn-op" onclick="inputChar('(')">(</button>
+            <button class="btn btn-op" onclick="inputChar(')')">)</button>
+            <button class="btn btn-op" onclick="inputOp('/')">÷</button>
+
+            <button class="btn btn-num" onclick="inputNum('7')">7</button>
+            <button class="btn btn-num" onclick="inputNum('8')">8</button>
+            <button class="btn btn-num" onclick="inputNum('9')">9</button>
+            <button class="btn btn-op" onclick="inputOp('*')">×</button>
+
+            <button class="btn btn-num" onclick="inputNum('4')">4</button>
+            <button class="btn btn-num" onclick="inputNum('5')">5</button>
+            <button class="btn btn-num" onclick="inputNum('6')">6</button>
+            <button class="btn btn-op" onclick="inputOp('-')">−</button>
+
+            <button class="btn btn-num" onclick="inputNum('1')">1</button>
+            <button class="btn btn-num" onclick="inputNum('2')">2</button>
+            <button class="btn btn-num" onclick="inputNum('3')">3</button>
+            <button class="btn btn-op" onclick="inputOp('+')">+</button>
+
+            <button class="btn btn-fn" onclick="inputChar('%')">%</button>
+            <button class="btn btn-num" onclick="inputNum('0')">0</button>
+            <button class="btn btn-num" onclick="inputChar('.')">.</button>
+            <button class="btn btn-eq" onclick="calculate()">=</button>
+
+            <button class="btn btn-fn" onclick="sqrtCalc()">√</button>
+            <button class="btn btn-fn" onclick="squareCalc()">x²</button>
+            <button class="btn btn-fn" onclick="inputChar('**')">xʸ</button>
+            <button class="btn btn-cl" onclick="backspace()">⌫</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ TRIGONOMETRY ═══ -->
+      <div class="panel" id="tab-trig">
+        <div class="calc-card">
+          <h2>Trigonometric Functions</h2>
+          <div class="inp-row">
+            <div class="inp-group">
+              <label>Angle Value</label>
+              <input type="number" id="trigVal" placeholder="e.g. 45" />
+            </div>
+            <div class="inp-group">
+              <label>Unit</label>
+              <select id="trigUnit">
+                <option value="deg">Degrees °</option>
+                <option value="rad">Radians</option>
+              </select>
+            </div>
+          </div>
+          <div class="trig-btns">
+            <button class="btn btn-fn" onclick="calcTrig('sin')">sin</button>
+            <button class="btn btn-fn" onclick="calcTrig('cos')">cos</button>
+            <button class="btn btn-fn" onclick="calcTrig('tan')">tan</button>
+            <button class="btn btn-fn" onclick="calcTrig('asin')">sin⁻¹</button>
+            <button class="btn btn-fn" onclick="calcTrig('acos')">cos⁻¹</button>
+            <button class="btn btn-fn" onclick="calcTrig('atan')">tan⁻¹</button>
+            <button class="btn btn-fn" onclick="calcTrig('sinh')">sinh</button>
+            <button class="btn btn-fn" onclick="calcTrig('cosh')">cosh</button>
+            <button class="btn btn-fn" onclick="calcTrig('tanh')">tanh</button>
+            <button class="btn btn-fn" onclick="calcTrig('log')">log₁₀</button>
+            <button class="btn btn-fn" onclick="calcTrig('ln')">ln</button>
+            <button class="btn btn-fn" onclick="calcTrig('exp')">eˣ</button>
+          </div>
+          <div class="result-box" id="trigResult">
+            <div class="res-label">Result</div>
+            <div class="res-val" id="trigResultVal">—</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ GEOMETRY ═══ -->
+      <div class="panel" id="tab-geometry">
+        <div class="calc-card">
+          <h2>Geometry Calculator</h2>
+          <div class="shape-tabs">
+            <button class="shape-tab active" onclick="showShape('circle')">
+              Circle
+            </button>
+            <button class="shape-tab" onclick="showShape('rectangle')">
+              Rectangle
+            </button>
+            <button class="shape-tab" onclick="showShape('triangle')">
+              Triangle
+            </button>
+            <button class="shape-tab" onclick="showShape('cube')">Cube</button>
+            <button class="shape-tab" onclick="showShape('cylinder')">
+              Cylinder
+            </button>
+            <button class="shape-tab" onclick="showShape('sphere')">
+              Sphere
+            </button>
+            <button class="shape-tab" onclick="showShape('cone')">Cone</button>
+          </div>
+
+          <!-- Circle -->
+          <div id="shape-circle">
+            <div class="inp-row">
+              <div class="inp-group">
+                <label>Radius</label
+                ><input id="g-cr" type="number" placeholder="r" />
+              </div>
+            </div>
+            <button class="calc-btn" onclick="calcShape('circle')">
+              Calculate
+            </button>
+            <div class="multi-result" id="r-circle" style="display: none">
+              <div class="result-box">
+                <div class="res-label">Area</div>
+                <div class="res-val" id="g-ca"></div>
+              </div>
+              <div class="result-box">
+                <div class="res-label">Perimeter</div>
+                <div class="res-val" id="g-cp"></div>
+              </div>
+              <div class="result-box">
+                <div class="res-label">Diameter</div>
+                <div class="res-val" id="g-cd"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rectangle -->
+          <div id="shape-rectangle" style="display: none">
+            <div class="inp-row">
+              <div class="inp-group">
+                <label>Length</label
+                ><input id="g-rl" type="number" placeholder="l" />
+              </div>
+              <div class="inp-group">
+                <label>Width</label
+                ><input id="g-rw" type="number" placeholder="w" />
+              </div>
+            </div>
+            <button class="calc-btn" onclick="calcShape('rectangle')">
+              Calculate
+            </button>
+            <div class="multi-result" id="r-rectangle" style="display: none">
+              <div class="result-box">
+                <div class="res-label">Area</div>
+                <div class="res-val" id="g-ra"></div>
+              </div>
+              <div class="result-box">
+                <div class="res-label">Perimeter</div>
+                <div class="res-val" id="g-rp"></div>
+              </div>
+              <div class="result-box">
+                <div class="res-label">Diagonal</div>
+                <div class="res-val" id="g-rd"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Triangle -->
+          <div id="shape-triangle" style="display: none">
+            <div class="inp-row three">
+              <div class="inp-group">
+                <label>Side A</label
+                ><input id="g-ta" type="number" placeholder="a" />
+              </div>
+              <div class="inp-group">
+                <label>Side B</label
+                ><input id="g-tb" type="number" placeholder="b" />
+              </div>
+              <div class="inp-group">
+                <label>Side C</label
+                ><input id="g-tc" type="number" placeholder="c" />
+              </div>
+            </div>
+            <button class="calc-btn" onclick="calcShape('triangle')">
+              Calculate
+            </button>
+            <div class="multi-result" id="r-triangle" style="display: none">
+              <div class="result-box">
+                <div class="res-label">Area</div>
+                <div class="res-val" id="g-tarea"></div>
+              </div>
+              <div class="result-box">
+                <div class="res-label">Perimeter</div>
+                <div class="res-val" id="g-tperim"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cube -->
+          <div id="shape-cube" style="display: none">
+            <div class="inp-row">
+              <div class="inp-group">
+                <label>Side</label
+                ><input id="g-cus" type="number" placeholder="s" />
+              </div>
+            </div>
+            <button class="calc-btn" onclick="calcShape('cube')">
+              Calculate
+            </button>
+            <div class="multi-result" id="r-cube" style="display: none">
+              <div class="result-box">
+                <div class="res-label">Volume</div>
+                <div class="res-val" id="g-cuv"></div>
+              </div>
+              <div class="result-box">
+                <div class="res-label">Surface Area</div>
+                <div class="res-val" id="g-cusa"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cylinder -->
+          <div id="shape-cylinder" style="display: none">
+            <div class="inp-row">
+              <div class="inp-group">
+                <label>Radius</label
+                ><input id="g-cyr" type="number" placeholder="r" />
+              </div>
+              <div class="inp-group">
+                <label>Height</label
+                ><input id="g-cyh" type="number" placeholder="h" />
+              </div>
+            </div>
+            <button class="calc-btn" onclick="calcShape('cylinder')">
+              Calculate
+            </button>
+            <div class="multi-result" id="r-cylinder" style="display: none">
+              <div class="result-box">
+                <div class="res-label">Volume</div>
+                <div class="res-val" id="g-cyv"></div>
+              </div>
+              <div class="result-box">
+                <div class="res-label">Curved SA</div>
+                <div class="res-val" id="g-cycsa"></div>
+              </div>
+              <div class="result-box">
+                <div class="res-label">Total SA</div>
+                <div class="res-val" id="g-cytsa"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sphere -->
+          <div id="shape-sphere" style="display: none">
+            <div class="inp-row">
+              <div class="inp-group">
+                <label>Radius</label
+                ><input id="g-spr" type="number" placeholder="r" />
+              </div>
+            </div>
+            <button class="calc-btn" onclick="calcShape('sphere')">
+              Calculate
+            </button>
+            <div class="multi-result" id="r-sphere" style="display: none">
+              <div class="result-box">
+                <div class="res-label">Volume</div>
+                <div class="res-val" id="g-spv"></div>
+              </div>
+              <div class="result-box">
+                <div class="res-label">Surface Area</div>
+                <div class="res-val" id="g-spsa"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cone -->
+          <div id="shape-cone" style="display: none">
+            <div class="inp-row">
+              <div class="inp-group">
+                <label>Radius</label
+                ><input id="g-cor" type="number" placeholder="r" />
+              </div>
+              <div class="inp-group">
+                <label>Height</label
+                ><input id="g-coh" type="number" placeholder="h" />
+              </div>
+            </div>
+            <button class="calc-btn" onclick="calcShape('cone')">
+              Calculate
+            </button>
+            <div class="multi-result" id="r-cone" style="display: none">
+              <div class="result-box">
+                <div class="res-label">Volume</div>
+                <div class="res-val" id="g-conv"></div>
+              </div>
+              <div class="result-box">
+                <div class="res-label">Slant Height</div>
+                <div class="res-val" id="g-cosl"></div>
+              </div>
+              <div class="result-box">
+                <div class="res-label">Total SA</div>
+                <div class="res-val" id="g-cotsa"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ EMI ═══ -->
+      <div class="panel" id="tab-emi">
+        <div class="calc-card">
+          <h2>EMI Calculator</h2>
+          <div class="inp-row three">
+            <div class="inp-group">
+              <label>Principal Amount (₹)</label
+              ><input id="emiP" type="number" placeholder="e.g. 500000" />
+            </div>
+            <div class="inp-group">
+              <label>Annual Interest Rate (%)</label
+              ><input id="emiR" type="number" placeholder="e.g. 8.5" />
+            </div>
+            <div class="inp-group">
+              <label>Tenure (Months)</label
+              ><input id="emiT" type="number" placeholder="e.g. 60" />
+            </div>
+          </div>
+          <button class="calc-btn" onclick="calcEMI()">Calculate EMI</button>
+          <div class="emi-summary" id="emiResult" style="display: none">
+            <div class="result-box">
+              <div class="res-label">Monthly EMI</div>
+              <div class="res-val" id="emiMonthly"></div>
+            </div>
+            <div class="result-box">
+              <div class="res-label">Total Amount</div>
+              <div class="res-val" id="emiTotal"></div>
+            </div>
+            <div class="result-box">
+              <div class="res-label">Total Interest</div>
+              <div class="res-val" id="emiInterest"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ DATA SIZE ═══ -->
+      <div class="panel" id="tab-data">
+        <div class="calc-card">
+          <h2>Data Size Converter</h2>
+          <div class="inp-row">
+            <div class="inp-group">
+              <label>Value</label
+              ><input id="dataVal" type="number" placeholder="Enter value" />
+            </div>
+            <div class="inp-group">
+              <label>From Unit</label>
+              <select id="dataFrom">
+                <option value="bit">Bit</option>
+                <option value="byte">Byte (B)</option>
+                <option value="kb">Kilobyte (KB)</option>
+                <option value="mb" selected>Megabyte (MB)</option>
+                <option value="gb">Gigabyte (GB)</option>
+                <option value="tb">Terabyte (TB)</option>
+                <option value="pb">Petabyte (PB)</option>
+              </select>
+            </div>
+          </div>
+          <button class="calc-btn" onclick="convertData()">Convert All</button>
+          <div id="dataResult" style="margin-top: 14px; display: none">
+            <div
+              style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px"
+              id="dataResultGrid"
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ TEMPERATURE ═══ -->
+      <div class="panel" id="tab-temp">
+        <div class="calc-card">
+          <h2>Temperature Converter</h2>
+          <div class="inp-row">
+            <div class="inp-group">
+              <label>Temperature</label
+              ><input
+                id="tempVal"
+                type="number"
+                placeholder="Enter temperature"
+              />
+            </div>
+            <div class="inp-group">
+              <label>From Unit</label>
+              <select id="tempFrom">
+                <option value="C">Celsius (°C)</option>
+                <option value="F">Fahrenheit (°F)</option>
+                <option value="K">Kelvin (K)</option>
+                <option value="R">Rankine (°R)</option>
+              </select>
+            </div>
+          </div>
+          <button class="calc-btn" onclick="convertTemp()">Convert All</button>
+          <div id="tempResult" style="margin-top: 14px; display: none">
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+              "
+              id="tempResultGrid"
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ UNIT CONVERTER ═══ -->
+      <div class="panel" id="tab-unit">
+        <div class="calc-card">
+          <h2>Unit Converter</h2>
+          <div class="inp-row three">
+            <div class="inp-group">
+              <label>Category</label>
+              <select id="unitCat" onchange="updateUnitOptions()">
+                <option value="length">Length</option>
+                <option value="weight">Weight</option>
+                <option value="speed">Speed</option>
+                <option value="area">Area</option>
+                <option value="volume">Volume</option>
+                <option value="time">Time</option>
+              </select>
+            </div>
+            <div class="inp-group">
+              <label>From</label
+              ><select id="unitFrom"></select>
+            </div>
+            <div class="inp-group">
+              <label>To</label
+              ><select id="unitTo"></select>
+            </div>
+          </div>
+          <div class="inp-row">
+            <div class="inp-group">
+              <label>Value</label
+              ><input id="unitVal" type="number" placeholder="Enter value" />
+            </div>
+          </div>
+          <button class="calc-btn" onclick="convertUnit()">Convert</button>
+          <div class="result-box" id="unitResult" style="display: none">
+            <div class="res-label">Result</div>
+            <div class="res-val" id="unitResultVal"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ AGE CALCULATOR ═══ -->
+      <div class="panel" id="tab-age">
+        <div class="calc-card">
+          <h2>Age Calculator</h2>
+          <div class="inp-row">
+            <div class="inp-group">
+              <label>Date of Birth</label><input id="dobInput" type="date" />
+            </div>
+            <div class="inp-group">
+              <label>Target Date (leave blank for today)</label
+              ><input id="targetDate" type="date" />
+            </div>
+          </div>
+          <button class="calc-btn" onclick="calcAge()">Calculate Age</button>
+          <div id="ageResult" style="display: none; margin-top: 14px">
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+              "
+              id="ageGrid"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+    
+  </body>
+</html>
