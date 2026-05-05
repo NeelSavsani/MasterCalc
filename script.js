@@ -475,3 +475,73 @@ document.getElementById("ageGrid").innerHTML = items
     .join("");
 document.getElementById("ageResult").style.display = "block";
 }
+// ════════ GST CALCULATOR ════════
+let gstMode = "add"; // "add" or "remove"
+
+function setGstMode(mode) {
+  gstMode = mode;
+  document.getElementById("gstModeAdd").classList.toggle("active", mode === "add");
+  document.getElementById("gstModeRemove").classList.toggle("active", mode === "remove");
+  document.getElementById("gstAmountLabel").textContent =
+    mode === "add" ? "Original Amount (₹)" : "Amount with GST (₹)";
+  calcGST();
+}
+
+document.getElementById("gstRate").addEventListener("change", function () {
+  document.getElementById("gstCustomRow").style.display =
+    this.value === "custom" ? "flex" : "none";
+  calcGST();
+});
+
+function calcGST() {
+  const amountInput = parseFloat(document.getElementById("gstAmount").value);
+  const rateSelect = document.getElementById("gstRate").value;
+  const rate =
+    rateSelect === "custom"
+      ? parseFloat(document.getElementById("gstCustomRate").value)
+      : parseFloat(rateSelect);
+
+  if (isNaN(amountInput) || isNaN(rate)) {
+    document.getElementById("gstResult").style.display = "none";
+    return;
+  }
+
+  let originalAmt, gstAmt, totalAmt;
+
+  if (gstMode === "add") {
+    originalAmt = amountInput;
+    gstAmt = (amountInput * rate) / 100;
+    totalAmt = amountInput + gstAmt;
+  } else {
+    totalAmt = amountInput;
+    originalAmt = (amountInput * 100) / (100 + rate);
+    gstAmt = totalAmt - originalAmt;
+  }
+
+  const fmt = (n) =>
+    "₹ " + parseFloat(n.toFixed(2)).toLocaleString("en-IN", { minimumFractionDigits: 2 });
+
+  const half = rate / 2;
+
+  // Summary cards
+  document.getElementById("gstSummaryGrid").innerHTML = [
+    ["Original Amount", fmt(originalAmt)],
+    ["GST Amount (" + rate + "%)", fmt(gstAmt)],
+    ["Total Amount", fmt(totalAmt)],
+  ]
+    .map(
+      ([l, val]) =>
+        `<div class="result-box" style="margin:0"><div class="res-label">${l}</div><div class="res-val">${val}</div></div>`
+    )
+    .join("");
+
+  // CGST / SGST / IGST
+  document.getElementById("cgstPct").textContent = half + "%";
+  document.getElementById("sgstPct").textContent = half + "%";
+  document.getElementById("igstPct").textContent = rate + "%";
+  document.getElementById("cgstAmt").textContent = fmt(gstAmt / 2);
+  document.getElementById("sgstAmt").textContent = fmt(gstAmt / 2);
+  document.getElementById("igstAmt").textContent = fmt(gstAmt);
+
+  document.getElementById("gstResult").style.display = "block";
+}
