@@ -41,6 +41,13 @@ expr += n;
 updateDisplay(expr);
 }
 function inputOp(op) {
+// Don't allow operator if expression is empty (nothing to operate on)
+if (expr === "" && !justCalc) return;
+// If last character is already an operator, replace it to prevent stacking
+const lastChar = expr.slice(-1);
+if (["+", "-", "*", "/"].includes(lastChar)) {
+    expr = expr.slice(0, -1);
+}
 justCalc = false;
 expr += op;
 updateDisplay(expr);
@@ -446,7 +453,7 @@ const totalHours = totalDays * 24;
 const nextBirthday = new Date(
     target.getFullYear(),
     dob.getMonth(),
-    dob.getDate(),
+    dob.getDate(),~
 );
 if (nextBirthday < target)
     nextBirthday.setFullYear(target.getFullYear() + 1);
