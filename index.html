@@ -21,41 +21,21 @@
       </a>
 
       <div class="nav-icons">
-        <!-- Theme Toggle -->
-        <button
-          class="icon-btn"
-          id="themeBtn"
-          title="Toggle Theme"
-          onclick="toggleTheme()"
-        >
-        <i class="fa-solid fa-sun"></i>
+        <button class="icon-btn" id="themeBtn" title="Toggle Theme" onclick="toggleTheme()">
+          <i class="fa-solid fa-sun"></i>
         </button>
         <div class="sep"></div>
-        <!-- GitHub -->
-        <a
-          class="icon-btn"
-          href="https://github.com"
-          target="_blank"
-          title="GitHub"
-        >
+        <a class="icon-btn" href="https://github.com" target="_blank" title="GitHub">
           <i class="fa-brands fa-github"></i>
         </a>
-        <!-- LinkedIn -->
-        <a
-          class="icon-btn"
-          href="https://linkedin.com"
-          target="_blank"
-          title="LinkedIn"
-        >
+        <a class="icon-btn" href="https://linkedin.com" target="_blank" title="LinkedIn">
           <i class="fa-brands fa-linkedin-in"></i>
         </a>
-        <!-- Email -->
         <a class="icon-btn" href="mailto:your@email.com" title="Send Email">
           <i class="fa-solid fa-envelope"></i>
         </a>
       </div>
 
-      <!-- Hamburger for mobile -->
       <button class="hamburger" id="hamburger" onclick="toggleMenu()">
         <span></span><span></span><span></span>
       </button>
@@ -65,15 +45,9 @@
     <div class="mobile-menu" id="mobileMenu">
       <div class="mobile-icons">
         <button class="icon-btn" onclick="toggleTheme()"><i class="fa-solid fa-sun"></i></button>
-        <a class="icon-btn" href="https://github.com" target="_blank">
-          <i class="fa-brands fa-github"></i>
-        </a>
-        <a class="icon-btn" href="https://linkedin.com" target="_blank">
-          <i class="fa-brands fa-linkedin-in"></i>
-        </a>
-        <a class="icon-btn" href="mailto:your@email.com">
-          <i class="fa-solid fa-envelope"></i>
-        </a>
+        <a class="icon-btn" href="https://github.com" target="_blank"><i class="fa-brands fa-github"></i></a>
+        <a class="icon-btn" href="https://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a class="icon-btn" href="mailto:your@email.com"><i class="fa-solid fa-envelope"></i></a>
       </div>
     </div>
 
@@ -88,6 +62,7 @@
           <button class="tab" onclick="showTab('trig')">Trigonometry</button>
           <button class="tab" onclick="showTab('geometry')">Geometry</button>
           <button class="tab" onclick="showTab('emi')">EMI</button>
+          <button class="tab" onclick="showTab('gst')">GST</button>
           <button class="tab" onclick="showTab('data')">Data Size</button>
           <button class="tab" onclick="showTab('temp')">Temperature</button>
           <button class="tab" onclick="showTab('unit')">Unit Converter</button>
@@ -180,219 +155,99 @@
         <div class="calc-card">
           <h2>Geometry Calculator</h2>
           <div class="shape-tabs">
-            <button class="shape-tab active" onclick="showShape('circle')">
-              Circle
-            </button>
-            <button class="shape-tab" onclick="showShape('rectangle')">
-              Rectangle
-            </button>
-            <button class="shape-tab" onclick="showShape('triangle')">
-              Triangle
-            </button>
+            <button class="shape-tab active" onclick="showShape('circle')">Circle</button>
+            <button class="shape-tab" onclick="showShape('rectangle')">Rectangle</button>
+            <button class="shape-tab" onclick="showShape('triangle')">Triangle</button>
             <button class="shape-tab" onclick="showShape('cube')">Cube</button>
-            <button class="shape-tab" onclick="showShape('cylinder')">
-              Cylinder
-            </button>
-            <button class="shape-tab" onclick="showShape('sphere')">
-              Sphere
-            </button>
+            <button class="shape-tab" onclick="showShape('cylinder')">Cylinder</button>
+            <button class="shape-tab" onclick="showShape('sphere')">Sphere</button>
             <button class="shape-tab" onclick="showShape('cone')">Cone</button>
           </div>
 
           <!-- Circle -->
           <div id="shape-circle">
-            <div class="inp-row">
-              <div class="inp-group">
-                <label>Radius</label
-                ><input id="g-cr" type="number" placeholder="r" />
-              </div>
-            </div>
-            <button class="calc-btn" onclick="calcShape('circle')">
-              Calculate
-            </button>
-            <div class="multi-result" id="r-circle" style="display: none">
-              <div class="result-box">
-                <div class="res-label">Area</div>
-                <div class="res-val" id="g-ca"></div>
-              </div>
-              <div class="result-box">
-                <div class="res-label">Perimeter</div>
-                <div class="res-val" id="g-cp"></div>
-              </div>
-              <div class="result-box">
-                <div class="res-label">Diameter</div>
-                <div class="res-val" id="g-cd"></div>
-              </div>
+            <div class="inp-row"><div class="inp-group"><label>Radius</label><input id="g-cr" type="number" placeholder="e.g. 7" /></div></div>
+            <button class="calc-btn" onclick="calcShape('circle')">Calculate</button>
+            <div class="multi-result" id="r-circle" style="display:none">
+              <div class="result-box"><div class="res-label">Area</div><div class="res-val" id="g-ca"></div></div>
+              <div class="result-box"><div class="res-label">Perimeter</div><div class="res-val" id="g-cp"></div></div>
+              <div class="result-box"><div class="res-label">Diameter</div><div class="res-val" id="g-cd"></div></div>
             </div>
           </div>
 
           <!-- Rectangle -->
-          <div id="shape-rectangle" style="display: none">
+          <div id="shape-rectangle" style="display:none">
             <div class="inp-row">
-              <div class="inp-group">
-                <label>Length</label
-                ><input id="g-rl" type="number" placeholder="l" />
-              </div>
-              <div class="inp-group">
-                <label>Width</label
-                ><input id="g-rw" type="number" placeholder="w" />
-              </div>
+              <div class="inp-group"><label>Length</label><input id="g-rl" type="number" placeholder="e.g. 10" /></div>
+              <div class="inp-group"><label>Width</label><input id="g-rw" type="number" placeholder="e.g. 5" /></div>
             </div>
-            <button class="calc-btn" onclick="calcShape('rectangle')">
-              Calculate
-            </button>
-            <div class="multi-result" id="r-rectangle" style="display: none">
-              <div class="result-box">
-                <div class="res-label">Area</div>
-                <div class="res-val" id="g-ra"></div>
-              </div>
-              <div class="result-box">
-                <div class="res-label">Perimeter</div>
-                <div class="res-val" id="g-rp"></div>
-              </div>
-              <div class="result-box">
-                <div class="res-label">Diagonal</div>
-                <div class="res-val" id="g-rd"></div>
-              </div>
+            <button class="calc-btn" onclick="calcShape('rectangle')">Calculate</button>
+            <div class="multi-result" id="r-rectangle" style="display:none">
+              <div class="result-box"><div class="res-label">Area</div><div class="res-val" id="g-ra"></div></div>
+              <div class="result-box"><div class="res-label">Perimeter</div><div class="res-val" id="g-rp"></div></div>
+              <div class="result-box"><div class="res-label">Diagonal</div><div class="res-val" id="g-rd"></div></div>
             </div>
           </div>
 
           <!-- Triangle -->
-          <div id="shape-triangle" style="display: none">
+          <div id="shape-triangle" style="display:none">
             <div class="inp-row three">
-              <div class="inp-group">
-                <label>Side A</label
-                ><input id="g-ta" type="number" placeholder="a" />
-              </div>
-              <div class="inp-group">
-                <label>Side B</label
-                ><input id="g-tb" type="number" placeholder="b" />
-              </div>
-              <div class="inp-group">
-                <label>Side C</label
-                ><input id="g-tc" type="number" placeholder="c" />
-              </div>
+              <div class="inp-group"><label>Side A</label><input id="g-ta" type="number" placeholder="e.g. 3" /></div>
+              <div class="inp-group"><label>Side B</label><input id="g-tb" type="number" placeholder="e.g. 4" /></div>
+              <div class="inp-group"><label>Side C</label><input id="g-tc" type="number" placeholder="e.g. 5" /></div>
             </div>
-            <button class="calc-btn" onclick="calcShape('triangle')">
-              Calculate
-            </button>
-            <div class="multi-result" id="r-triangle" style="display: none">
-              <div class="result-box">
-                <div class="res-label">Area</div>
-                <div class="res-val" id="g-tarea"></div>
-              </div>
-              <div class="result-box">
-                <div class="res-label">Perimeter</div>
-                <div class="res-val" id="g-tperim"></div>
-              </div>
+            <button class="calc-btn" onclick="calcShape('triangle')">Calculate</button>
+            <div class="multi-result" id="r-triangle" style="display:none">
+              <div class="result-box"><div class="res-label">Area</div><div class="res-val" id="g-tarea"></div></div>
+              <div class="result-box"><div class="res-label">Perimeter</div><div class="res-val" id="g-tperim"></div></div>
             </div>
           </div>
 
           <!-- Cube -->
-          <div id="shape-cube" style="display: none">
-            <div class="inp-row">
-              <div class="inp-group">
-                <label>Side</label
-                ><input id="g-cus" type="number" placeholder="s" />
-              </div>
-            </div>
-            <button class="calc-btn" onclick="calcShape('cube')">
-              Calculate
-            </button>
-            <div class="multi-result" id="r-cube" style="display: none">
-              <div class="result-box">
-                <div class="res-label">Volume</div>
-                <div class="res-val" id="g-cuv"></div>
-              </div>
-              <div class="result-box">
-                <div class="res-label">Surface Area</div>
-                <div class="res-val" id="g-cusa"></div>
-              </div>
+          <div id="shape-cube" style="display:none">
+            <div class="inp-row"><div class="inp-group"><label>Side</label><input id="g-cus" type="number" placeholder="e.g. 4" /></div></div>
+            <button class="calc-btn" onclick="calcShape('cube')">Calculate</button>
+            <div class="multi-result" id="r-cube" style="display:none">
+              <div class="result-box"><div class="res-label">Volume</div><div class="res-val" id="g-cuv"></div></div>
+              <div class="result-box"><div class="res-label">Surface Area</div><div class="res-val" id="g-cusa"></div></div>
             </div>
           </div>
 
           <!-- Cylinder -->
-          <div id="shape-cylinder" style="display: none">
+          <div id="shape-cylinder" style="display:none">
             <div class="inp-row">
-              <div class="inp-group">
-                <label>Radius</label
-                ><input id="g-cyr" type="number" placeholder="r" />
-              </div>
-              <div class="inp-group">
-                <label>Height</label
-                ><input id="g-cyh" type="number" placeholder="h" />
-              </div>
+              <div class="inp-group"><label>Radius</label><input id="g-cyr" type="number" placeholder="e.g. 5" /></div>
+              <div class="inp-group"><label>Height</label><input id="g-cyh" type="number" placeholder="e.g. 10" /></div>
             </div>
-            <button class="calc-btn" onclick="calcShape('cylinder')">
-              Calculate
-            </button>
-            <div class="multi-result" id="r-cylinder" style="display: none">
-              <div class="result-box">
-                <div class="res-label">Volume</div>
-                <div class="res-val" id="g-cyv"></div>
-              </div>
-              <div class="result-box">
-                <div class="res-label">Curved SA</div>
-                <div class="res-val" id="g-cycsa"></div>
-              </div>
-              <div class="result-box">
-                <div class="res-label">Total SA</div>
-                <div class="res-val" id="g-cytsa"></div>
-              </div>
+            <button class="calc-btn" onclick="calcShape('cylinder')">Calculate</button>
+            <div class="multi-result" id="r-cylinder" style="display:none">
+              <div class="result-box"><div class="res-label">Volume</div><div class="res-val" id="g-cyv"></div></div>
+              <div class="result-box"><div class="res-label">Curved SA</div><div class="res-val" id="g-cycsa"></div></div>
+              <div class="result-box"><div class="res-label">Total SA</div><div class="res-val" id="g-cytsa"></div></div>
             </div>
           </div>
 
           <!-- Sphere -->
-          <div id="shape-sphere" style="display: none">
-            <div class="inp-row">
-              <div class="inp-group">
-                <label>Radius</label
-                ><input id="g-spr" type="number" placeholder="r" />
-              </div>
-            </div>
-            <button class="calc-btn" onclick="calcShape('sphere')">
-              Calculate
-            </button>
-            <div class="multi-result" id="r-sphere" style="display: none">
-              <div class="result-box">
-                <div class="res-label">Volume</div>
-                <div class="res-val" id="g-spv"></div>
-              </div>
-              <div class="result-box">
-                <div class="res-label">Surface Area</div>
-                <div class="res-val" id="g-spsa"></div>
-              </div>
+          <div id="shape-sphere" style="display:none">
+            <div class="inp-row"><div class="inp-group"><label>Radius</label><input id="g-spr" type="number" placeholder="e.g. 6" /></div></div>
+            <button class="calc-btn" onclick="calcShape('sphere')">Calculate</button>
+            <div class="multi-result" id="r-sphere" style="display:none">
+              <div class="result-box"><div class="res-label">Volume</div><div class="res-val" id="g-spv"></div></div>
+              <div class="result-box"><div class="res-label">Surface Area</div><div class="res-val" id="g-spsa"></div></div>
             </div>
           </div>
 
           <!-- Cone -->
-          <div id="shape-cone" style="display: none">
+          <div id="shape-cone" style="display:none">
             <div class="inp-row">
-              <div class="inp-group">
-                <label>Radius</label
-                ><input id="g-cor" type="number" placeholder="r" />
-              </div>
-              <div class="inp-group">
-                <label>Height</label
-                ><input id="g-coh" type="number" placeholder="h" />
-              </div>
+              <div class="inp-group"><label>Radius</label><input id="g-cor" type="number" placeholder="e.g. 4" /></div>
+              <div class="inp-group"><label>Height</label><input id="g-coh" type="number" placeholder="e.g. 9" /></div>
             </div>
-            <button class="calc-btn" onclick="calcShape('cone')">
-              Calculate
-            </button>
-            <div class="multi-result" id="r-cone" style="display: none">
-              <div class="result-box">
-                <div class="res-label">Volume</div>
-                <div class="res-val" id="g-conv"></div>
-              </div>
-              <div class="result-box">
-                <div class="res-label">Slant Height</div>
-                <div class="res-val" id="g-cosl"></div>
-              </div>
-              <div class="result-box">
-                <div class="res-label">Total SA</div>
-                <div class="res-val" id="g-cotsa"></div>
-              </div>
+            <button class="calc-btn" onclick="calcShape('cone')">Calculate</button>
+            <div class="multi-result" id="r-cone" style="display:none">
+              <div class="result-box"><div class="res-label">Volume</div><div class="res-val" id="g-conv"></div></div>
+              <div class="result-box"><div class="res-label">Slant Height</div><div class="res-val" id="g-cosl"></div></div>
+              <div class="result-box"><div class="res-label">Total SA</div><div class="res-val" id="g-cotsa"></div></div>
             </div>
           </div>
         </div>
@@ -404,31 +259,97 @@
           <h2>EMI Calculator</h2>
           <div class="inp-row three">
             <div class="inp-group">
-              <label>Principal Amount (₹)</label
-              ><input id="emiP" type="number" placeholder="e.g. 500000" />
+              <label>Principal Amount (₹)</label>
+              <input id="emiP" type="number" placeholder="e.g. 500000" />
             </div>
             <div class="inp-group">
-              <label>Annual Interest Rate (%)</label
-              ><input id="emiR" type="number" placeholder="e.g. 8.5" />
+              <label>Annual Interest Rate (%)</label>
+              <input id="emiR" type="number" placeholder="e.g. 8.5" />
             </div>
             <div class="inp-group">
-              <label>Tenure (Months)</label
-              ><input id="emiT" type="number" placeholder="e.g. 60" />
+              <label>Tenure (Months)</label>
+              <input id="emiT" type="number" placeholder="e.g. 60" />
             </div>
           </div>
           <button class="calc-btn" onclick="calcEMI()">Calculate EMI</button>
-          <div class="emi-summary" id="emiResult" style="display: none">
-            <div class="result-box">
-              <div class="res-label">Monthly EMI</div>
-              <div class="res-val" id="emiMonthly"></div>
+          <div class="emi-summary" id="emiResult" style="display:none">
+            <div class="result-box"><div class="res-label">Monthly EMI</div><div class="res-val" id="emiMonthly"></div></div>
+            <div class="result-box"><div class="res-label">Total Amount</div><div class="res-val" id="emiTotal"></div></div>
+            <div class="result-box"><div class="res-label">Total Interest</div><div class="res-val" id="emiInterest"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ GST CALCULATOR ═══ -->
+      <div class="panel" id="tab-gst">
+        <div class="calc-card">
+          <h2>GST Calculator</h2>
+
+          <!-- Mode toggle -->
+          <div class="gst-mode-wrap">
+            <button class="gst-mode-btn active" id="gstModeAdd" onclick="setGstMode('add')">
+              <i class="fa-solid fa-plus"></i> Add GST
+            </button>
+            <button class="gst-mode-btn" id="gstModeRemove" onclick="setGstMode('remove')">
+              <i class="fa-solid fa-minus"></i> Remove GST
+            </button>
+          </div>
+
+          <div class="inp-row">
+            <div class="inp-group">
+              <label id="gstAmountLabel">Original Amount (₹)</label>
+              <input id="gstAmount" type="number" placeholder="e.g. 10000" oninput="calcGST()" />
             </div>
-            <div class="result-box">
-              <div class="res-label">Total Amount</div>
-              <div class="res-val" id="emiTotal"></div>
+            <div class="inp-group">
+              <label>GST Rate (%)</label>
+              <select id="gstRate" onchange="calcGST()">
+                <option value="0">0% (Exempt)</option>
+                <option value="0.1">0.1%</option>
+                <option value="0.25">0.25%</option>
+                <option value="1">1%</option>
+                <option value="1.5">1.5%</option>
+                <option value="3">3%</option>
+                <option value="5" selected>5%</option>
+                <option value="6">6%</option>
+                <option value="7.5">7.5%</option>
+                <option value="12">12%</option>
+                <option value="18">18%</option>
+                <option value="28">28%</option>
+                <option value="custom">Custom</option>
+              </select>
             </div>
-            <div class="result-box">
-              <div class="res-label">Total Interest</div>
-              <div class="res-val" id="emiInterest"></div>
+          </div>
+
+          <!-- Custom rate row (hidden by default) -->
+          <div class="inp-row" id="gstCustomRow" style="display:none">
+            <div class="inp-group">
+              <label>Custom GST Rate (%)</label>
+              <input id="gstCustomRate" type="number" placeholder="e.g. 14" min="0" max="100" oninput="calcGST()" />
+            </div>
+          </div>
+
+          <!-- GST breakdown results (auto-updates on input) -->
+          <div id="gstResult" style="display:none; margin-top:16px">
+            <!-- Summary cards -->
+            <div class="gst-summary" id="gstSummaryGrid"></div>
+
+            <!-- CGST / SGST / IGST split -->
+            <div class="gst-split-card">
+              <div class="gst-split-title">Tax Breakup</div>
+              <div class="gst-split-grid">
+                <div class="gst-split-item">
+                  <span class="gst-split-label">CGST (<span id="cgstPct">—</span>)</span>
+                  <span class="gst-split-val" id="cgstAmt">—</span>
+                </div>
+                <div class="gst-split-item">
+                  <span class="gst-split-label">SGST (<span id="sgstPct">—</span>)</span>
+                  <span class="gst-split-val" id="sgstAmt">—</span>
+                </div>
+                <div class="gst-split-item gst-split-full">
+                  <span class="gst-split-label">IGST (<span id="igstPct">—</span>)</span>
+                  <span class="gst-split-val" id="igstAmt">—</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -440,8 +361,8 @@
           <h2>Data Size Converter</h2>
           <div class="inp-row">
             <div class="inp-group">
-              <label>Value</label
-              ><input id="dataVal" type="number" placeholder="Enter value" />
+              <label>Value</label>
+              <input id="dataVal" type="number" placeholder="Enter value" />
             </div>
             <div class="inp-group">
               <label>From Unit</label>
@@ -457,11 +378,8 @@
             </div>
           </div>
           <button class="calc-btn" onclick="convertData()">Convert All</button>
-          <div id="dataResult" style="margin-top: 14px; display: none">
-            <div
-              style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px"
-              id="dataResultGrid"
-            ></div>
+          <div id="dataResult" style="margin-top:14px;display:none">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px" id="dataResultGrid"></div>
           </div>
         </div>
       </div>
@@ -472,12 +390,8 @@
           <h2>Temperature Converter</h2>
           <div class="inp-row">
             <div class="inp-group">
-              <label>Temperature</label
-              ><input
-                id="tempVal"
-                type="number"
-                placeholder="Enter temperature"
-              />
+              <label>Temperature</label>
+              <input id="tempVal" type="number" placeholder="Enter temperature" />
             </div>
             <div class="inp-group">
               <label>From Unit</label>
@@ -490,15 +404,8 @@
             </div>
           </div>
           <button class="calc-btn" onclick="convertTemp()">Convert All</button>
-          <div id="tempResult" style="margin-top: 14px; display: none">
-            <div
-              style="
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
-              "
-              id="tempResultGrid"
-            ></div>
+          <div id="tempResult" style="margin-top:14px;display:none">
+            <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px" id="tempResultGrid"></div>
           </div>
         </div>
       </div>
@@ -520,22 +427,22 @@
               </select>
             </div>
             <div class="inp-group">
-              <label>From</label
-              ><select id="unitFrom"></select>
+              <label>From</label>
+              <select id="unitFrom"></select>
             </div>
             <div class="inp-group">
-              <label>To</label
-              ><select id="unitTo"></select>
+              <label>To</label>
+              <select id="unitTo"></select>
             </div>
           </div>
           <div class="inp-row">
             <div class="inp-group">
-              <label>Value</label
-              ><input id="unitVal" type="number" placeholder="Enter value" />
+              <label>Value</label>
+              <input id="unitVal" type="number" placeholder="Enter value" />
             </div>
           </div>
           <button class="calc-btn" onclick="convertUnit()">Convert</button>
-          <div class="result-box" id="unitResult" style="display: none">
+          <div class="result-box" id="unitResult" style="display:none">
             <div class="res-label">Result</div>
             <div class="res-val" id="unitResultVal"></div>
           </div>
@@ -548,29 +455,22 @@
           <h2>Age Calculator</h2>
           <div class="inp-row">
             <div class="inp-group">
-              <label>Date of Birth</label><input id="dobInput" type="date" />
+              <label>Date of Birth</label>
+              <input id="dobInput" type="date" />
             </div>
             <div class="inp-group">
-              <label>Target Date (leave blank for today)</label
-              ><input id="targetDate" type="date" />
+              <label>Target Date (leave blank for today)</label>
+              <input id="targetDate" type="date" />
             </div>
           </div>
           <button class="calc-btn" onclick="calcAge()">Calculate Age</button>
-          <div id="ageResult" style="display: none; margin-top: 14px">
-            <div
-              style="
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 10px;
-              "
-              id="ageGrid"
-            ></div>
+          <div id="ageResult" style="display:none;margin-top:14px">
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px" id="ageGrid"></div>
           </div>
         </div>
       </div>
     </main>
 
     <script src="script.js"></script>
-    
   </body>
 </html>

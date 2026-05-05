@@ -537,6 +537,103 @@ h1 span {
     margin-top: 14px;
 }
 
+/* ─── GST CALCULATOR ─── */
+.gst-mode-wrap {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 18px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.gst-mode-btn {
+    flex: 1;
+    padding: 10px 16px;
+    border-radius: 7px;
+    border: none;
+    background: transparent;
+    color: var(--text2);
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: "Syne", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+}
+
+.gst-mode-btn.active {
+    background: var(--accent);
+    color: #0a0a0a;
+}
+
+.gst-mode-btn:hover:not(.active) {
+    color: var(--accent);
+}
+
+.gst-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.gst-summary .result-box {
+    margin-top: 0;
+}
+
+.gst-split-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    font-family: "Space Mono", monospace;
+}
+
+.gst-split-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--text2);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 12px;
+}
+
+.gst-split-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.gst-split-full {
+    grid-column: 1 / -1;
+}
+
+.gst-split-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+}
+
+.gst-split-label {
+    font-size: 0.8rem;
+    color: var(--text2);
+}
+
+.gst-split-val {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--warn);
+}
+
 /* ─── RESPONSIVE ─── */
 
 /* Tablet */
@@ -564,6 +661,10 @@ h1 span {
     .btn {
         padding: 14px 10px;
         font-size: 0.95rem;
+    }
+
+    .gst-summary {
+        grid-template-columns: 1fr 1fr;
     }
 }
 
@@ -604,7 +705,6 @@ h1 span {
         margin-bottom: 20px;
     }
 
-    /* Tabs — scrollable row, no wrapping */
     .tabs-wrap {
         margin-bottom: 18px;
     }
@@ -614,7 +714,6 @@ h1 span {
         font-size: 0.78rem;
     }
 
-    /* Cards */
     .calc-card {
         padding: 16px 14px;
     }
@@ -624,7 +723,6 @@ h1 span {
         margin-bottom: 12px;
     }
 
-    /* Basic calc display */
     .display {
         padding: 14px 14px;
         margin-bottom: 12px;
@@ -634,7 +732,6 @@ h1 span {
         font-size: 1.75rem;
     }
 
-    /* Calc buttons */
     .btn-grid {
         gap: 5px;
     }
@@ -645,7 +742,6 @@ h1 span {
         border-radius: 8px;
     }
 
-    /* Trig buttons */
     .trig-btns {
         gap: 6px;
     }
@@ -655,7 +751,6 @@ h1 span {
         font-size: 0.82rem;
     }
 
-    /* Input rows */
     .inp-row {
         grid-template-columns: 1fr;
         gap: 10px;
@@ -671,7 +766,6 @@ h1 span {
         font-size: 0.9rem;
     }
 
-    /* Multi-result grids */
     .multi-result {
         grid-template-columns: 1fr 1fr;
         gap: 8px;
@@ -682,7 +776,6 @@ h1 span {
         gap: 8px;
     }
 
-    /* Result boxes */
     .result-box {
         padding: 12px 14px;
     }
@@ -691,7 +784,6 @@ h1 span {
         font-size: 1rem;
     }
 
-    /* Shape tabs */
     .shape-tabs {
         gap: 5px;
     }
@@ -701,26 +793,42 @@ h1 span {
         font-size: 0.76rem;
     }
 
-    /* Data result inline grid override */
     #dataResultGrid {
         grid-template-columns: 1fr 1fr !important;
     }
 
-    /* Age / temp / data result grids */
     #ageGrid,
     #tempResultGrid {
         grid-template-columns: 1fr 1fr !important;
     }
 
-    /* Calc button */
     .calc-btn {
         padding: 12px;
         font-size: 0.9rem;
     }
 
-    /* Mobile menu icons row */
     .mobile-icons {
         padding: 10px 12px;
+    }
+
+    /* GST mobile */
+    .gst-mode-btn {
+        padding: 9px 10px;
+        font-size: 0.82rem;
+        gap: 5px;
+    }
+
+    .gst-summary {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .gst-split-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gst-split-full {
+        grid-column: 1;
     }
 }
 
@@ -744,16 +852,20 @@ h1 span {
     #tempResultGrid {
         grid-template-columns: 1fr !important;
     }
+
+    .gst-summary {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 /* Firefox */
 input[type=number] {
-  -moz-appearance: textfield;
+    -moz-appearance: textfield;
 }
