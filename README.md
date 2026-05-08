@@ -306,6 +306,6 @@ This project is licensed under the MIT License.
 
 <hr>
 
-<p >
+<p align="center">
   Built with ❤️ by <b>Neel Savsani</b>
 </p>
